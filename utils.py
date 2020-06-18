@@ -28,9 +28,10 @@ def compute_score( x, w, h ):
     k = np.ones( (h, w) )
     score = convolve( x, k, mode='wrap' )
     score[:, :w//2] = 0
-    score[:, math.ceil(-w/2):] = 0
+    print("ciel: ", int(math.ceil(-w/2)))
+    score[:, int(math.ceil(-w/2)):] = 0
     score[:h//2, :] = 0
-    score[math.ceil(-h/2):, :] = 0
+    score[int(math.ceil(-h/2)):, :] = 0
     return score
 def locate_bbox( a, w, h ):
     row = np.argmax( np.max(a, axis=1) )
